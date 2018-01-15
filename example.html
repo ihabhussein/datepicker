@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Date Picker Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+</head>
+<body lang="ar-LY" dir="rtl" data-sow="6"> <!-- FIXME -->
+    <form>
+        <input id="date1" type="date" class="datepicker" placeholder="Start Date" required>
+        <input id="date2" type="date" class="datepicker" placeholder="End Date" required>
+        <input type="submit">
+    </form>
+    <script src="datepicker.js"></script>
+    <style>
+    body {font-family: Cairo, sans-serif;}
+
+    /* Example styling od the date picker */
+    #_dp_dp {border: 1px solid lightgray;}
+    #_dp_head {
+        display: flex; flex-direction: row; justify-content: space-between;
+        background-color: #E65853; color: white;
+    }
+    #_dp_dp a {text-decoration: none;}
+    #_dp_dp a, #_dp_dp a:visited {color: inherit;}
+    #_dp_dp a:hover {text-decoration: underline;}
+    #_dp_title, #_dp_prev, #_dp_next {padding: 2px;}
+    #_dp_dp table {border-collapse: collapse; text-align: center;}
+    #_dp_dp th, #_dp_dp td {min-width: 2em;}
+    #_dp_dp td.today {background-color: yellow;}
+    </style>
+</body>
+</html>
