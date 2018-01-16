@@ -1,7 +1,7 @@
 ;(function() {
     'use strict';
-    let lang = document.body.lang || 'en';
-    let sow = Number(document.body.dataset['sow'] || 0);
+    let lang = document.documentElement.lang || 'en';
+    let sow = Number(document.documentElement.dataset['sow'] || 0);
     let dp = document.createElement('div');
     let in_dp = false;
 
