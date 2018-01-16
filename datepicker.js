@@ -98,11 +98,15 @@
         el.parentNode.removeChild(dp);
     };
 
-    buildDatePicker();
-    document.querySelectorAll('input.datepicker').forEach(el => {
-        if (el.type == 'date') return;
-        el.pattern = String.raw`\d\d\d\d-\d\d-\d\d`;
-        el.addEventListener('focus', function() { showPicker(el) });
-        el.addEventListener('blur', function() { if (!in_dp) hidePicker(el) });
-    });
+    // Check if browser needs date picker
+    let test = document.createElement('input');
+    test.setAttribute('type', 'date');
+    if ((test.type != 'date') || /Firefox/.test(navigator.userAgent)) {
+        buildDatePicker();
+        document.querySelectorAll('input.datepicker').forEach(el => {
+            el.pattern = String.raw`\d\d\d\d-\d\d-\d\d`;
+            el.addEventListener('focus', function() { showPicker(el) });
+            el.addEventListener('blur', function() { if (!in_dp) hidePicker(el) });
+        });
+    };
 })();
