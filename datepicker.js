@@ -90,7 +90,7 @@
         el.parentNode.appendChild(dp);
         let r = el.getBoundingClientRect();
         dp.setAttribute('style', 'position:fixed;top:' + r.bottom + 'px;' + (
-            document.documentElement.dir == 'ltr'? 'left:' + r.left: 'right:' + (window.innerWidth - r.right)
+            document.documentElement.dir == 'rtl'? 'right:' + (window.innerWidth - r.right): 'left:' + r.left
         ) + 'px;');
     };
 
