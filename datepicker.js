@@ -89,8 +89,8 @@
         initDatePicker(el, d);
         el.parentNode.appendChild(dp);
         let r = el.getBoundingClientRect();
-        dp.setAttribute('style', 'position:absolute;top:' + r.bottom + 'px;' + (
-            document.body.dir == 'ltr'? 'left:' + r.left: 'right:' + (window.innerWidth - r.right)
+        dp.setAttribute('style', 'position:fixed;top:' + r.bottom + 'px;' + (
+            document.documentElement.dir == 'ltr'? 'left:' + r.left: 'right:' + (window.innerWidth - r.right)
         ) + 'px;');
     };
 
