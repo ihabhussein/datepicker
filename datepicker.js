@@ -50,6 +50,7 @@
 
         dp.appendChild(table);
         dp.id = '_dp_dp';
+        dp.style.position = 'absolute';
         dp.addEventListener('mouseenter', () => in_dp = true);
         dp.addEventListener('mouseleave', () => in_dp = false);
     };
@@ -88,10 +89,6 @@
         if (isNaN(d.getDate())) d = new Date();
         initDatePicker(el, d);
         el.parentNode.appendChild(dp);
-        let r = el.getBoundingClientRect();
-        dp.setAttribute('style', 'position:fixed;top:' + r.bottom + 'px;' + (
-            document.documentElement.dir == 'rtl'? 'right:' + (window.innerWidth - r.right): 'left:' + r.left
-        ) + 'px;');
     };
 
     function hidePicker(el) {
