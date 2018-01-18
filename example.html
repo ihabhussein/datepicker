@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="it-IT" dir="ltr" data-sow="1">
+<html>
 <head>
     <meta charset="utf-8">
-    <title>Esempio di Date Picker</title>
+    <title>Date Picker Example</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
@@ -45,9 +45,9 @@
     placerat accumsan, rutrum sit amet turpis.</p>
 
     <form>
-        <input id="date1" type="date" class="datepicker" placeholder="Data d'inizio" required>
-        <input id="date2" type="date" class="datepicker" placeholder="Data di fine" required>
-        <input type="submit" value="Invia">
+        <input id="date1" type="date" class="datepicker" placeholder="Start Date" required>
+        <input id="date2" type="date" class="datepicker" placeholder="End Date" required>
+        <input type="submit" value="Send">
     </form>
 
     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
@@ -96,7 +96,7 @@
     #_dp_dp {border: 1px solid lightgray; background-color: white; }
     #_dp_head {
         display: flex; flex-direction: row; justify-content: space-between;
-        background-color: #4B61D1; color: white;
+        background-color: #E65853; color: white;
     }
     #_dp_dp a {text-decoration: none;}
     #_dp_dp a, #_dp_dp a:visited {color: inherit;}
@@ -107,7 +107,7 @@
     #_dp_dp th {background-color: lightgray;}
     #_dp_dp td {border: 1px solid lightgray;}
     #_dp_dp td:empty {border: 0px;}
-    #_dp_dp td.today {background-color: yellow;}
+    #_dp_dp td.today a {border: 2px solid red; border-radius: 50%;}
     </style>
 </body>
 </html>
