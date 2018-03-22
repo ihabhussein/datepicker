@@ -1,58 +1,43 @@
-;(function() {
+;(() => {
     'use strict';
     let lang = document.documentElement.lang || 'en';
-    let sow = Number(document.documentElement.dataset['sow'] || 0);
-    let dp = document.createElement('div');
+    let sow = Number(document.documentElement.dataset['sow'] || '0');
+    let days_of_week = [0, 1, 2, 3, 4, 5, 6].map(d => (d + sow) % 7);
     let in_dp = false;
+    let dp = document.createElement('div');
 
     function buildDatePicker() {
         let th = document.createElement('div');
         th.id = '_dp_head';
-
-        let x = document.createElement('a');
-        x.innerText = '<<';
-        x.setAttribute('href', '#');
-        x.id = '_dp_prev';
-        th.appendChild(x);
-        x = document.createElement('span');
-        x.id = '_dp_title';
-        th.appendChild(x);
-        x = document.createElement('a');
-        x.innerText = '>>';
-        x.setAttribute('href', '#');
-        x.id = '_dp_next';
-        th.appendChild(x);
+        th.innerHTML = `<div id="_dp_head"><a href="#" id="_dp_prev">&lt;&lt;</a> <span id="_dp_title">&nbsp;</span><a href="#" id="_dp_next">&gt;&gt;</a></div>`;
         dp.appendChild(th);
 
         let thead = document.createElement('thead');
         let tr = document.createElement('tr');
-        [0, 1, 2, 3, 4, 5, 6].forEach(d => {
+        days_of_week.forEach(d => {
             let th = document.createElement('th');
             th.setAttribute('scope', 'col');
-            th.innerText = (new Date(2018, 0, d + sow)).toLocaleDateString(lang, {weekday: 'short'});
+            th.innerText = (new Date(2018, 0, d)).toLocaleDateString(lang, {weekday: 'short'});
             tr.appendChild(th);
         });
         thead.appendChild(tr);
 
         let tbody = document.createElement('tbody');
-        for (let i = 0; i < 6; i++) {
+        days_of_week.forEach(d => {
             let tr = document.createElement('tr');
-            for (let j = 0; j < 7; j++) {
-                let td = document.createElement('td');
-                tr.appendChild(td);
-            };
+            tr.innerHTML = `<td></td><td></td><td></td><td></td><td></td><td></td><td></td>`;
             tbody.appendChild(tr);
-        };
+        });
 
         let table = document.createElement('table');
         table.appendChild(thead);
         table.appendChild(tbody);
-
         dp.appendChild(table);
+
         dp.id = '_dp_dp';
         dp.style.position = 'absolute';
-        dp.addEventListener('mouseenter', () => in_dp = true);
-        dp.addEventListener('mouseleave', () => in_dp = false);
+        dp.onmouseenter = () => in_dp = true;
+        dp.onmouseleave = () => in_dp = false;
     };
 
     function initDatePicker(el, d) {
@@ -69,19 +54,17 @@
         dp.querySelectorAll('td').forEach(td => {
             td.innerText = ''; td.className = '';
             if (skip-- <= 0 && d.getMonth() == m) {
-                let a = document.createElement('a');
-                a.innerText = d.toLocaleDateString(lang, {day: 'numeric'});
-                a.setAttribute('href', '#');
-                a.dataset['day'] = d.getDate() + 1;
-                a.addEventListener('click', () => {
-                    el.value = (new Date(y, m, a.dataset['day'])).toISOString().substring(0, 10);
-                    el.parentNode.removeChild(dp);
-                });
-                td.appendChild(a);
-                if (d.getDate() == dd) td.className = 'today';
+                td.className = d.getDate() == dd? 'today': '';
+                td.innerHTML = `<a href="#" data-day="${d.getDate() + 1}">${d.toLocaleDateString(lang, {day: 'numeric'})}</a>`;
                 d.setDate(d.getDate() + 1);
             };
         });
+        dp.querySelectorAll('td a').forEach(a => {
+            a.onclick = () => {
+                el.value = (new Date(y, m, a.dataset['day'])).toISOString().substring(0, 10);
+                el.parentNode.removeChild(dp);
+            };
+        })
     };
 
     function showPicker(el) {
@@ -98,7 +81,7 @@
     // Check if browser needs date picker
     let test = document.createElement('input');
     test.setAttribute('type', 'date');
-    if ((test.type != 'date') || /Firefox/.test(navigator.userAgent)) {
+    if (test.type != 'date') {
         buildDatePicker();
         document.querySelectorAll('input.datepicker').forEach(el => {
             el.pattern = String.raw`\d\d\d\d-\d\d-\d\d`;
