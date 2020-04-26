@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Date Picker Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+    porttitor porttitor interdum. Vivamus vehicula nibh sit amet sapien varius
+    hendrerit. Suspendisse ac lobortis mauris. Praesent tincidunt, risus nec
+    pulvinar ullamcorper, ante erat luctus ante, eu suscipit elit purus sit amet
+    turpis. In hac habitasse platea dictumst. Nulla lobortis libero non pulvinar
+    tempus. Nulla tempor luctus sapien faucibus efficitur. Curabitur maximus
+    nibh id sapien facilisis, vitae ultricies sem convallis. Nulla fermentum
+    eget diam et finibus. Sed efficitur justo sed mollis ultrices. Sed pharetra
+    dapibus nisi, non venenatis purus bibendum at. Integer risus mauris,
+    faucibus non efficitur nec, viverra in mauris.</p>
+
+    <form>
+        <input id="date1" type="date" class="datepicker" placeholder="Start Date" required>
+        <input id="date2" type="date" class="datepicker" placeholder="End Date" required>
+        <input type="submit" value="Send">
+    </form>
+
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+    porttitor porttitor interdum. Vivamus vehicula nibh sit amet sapien varius
+    hendrerit. Suspendisse ac lobortis mauris. Praesent tincidunt, risus nec
+    pulvinar ullamcorper, ante erat luctus ante, eu suscipit elit purus sit amet
+    turpis. In hac habitasse platea dictumst. Nulla lobortis libero non pulvinar
+    tempus. Nulla tempor luctus sapien faucibus efficitur. Curabitur maximus
+    nibh id sapien facilisis, vitae ultricies sem convallis. Nulla fermentum
+    eget diam et finibus. Sed efficitur justo sed mollis ultrices. Sed pharetra
+    dapibus nisi, non venenatis purus bibendum at. Integer risus mauris,
+    faucibus non efficitur nec, viverra in mauris.</p>
+
+    <script src="../lib/datepicker.js"></script>
+    <style>
+    body {font-family: Raleway, sans-serif; margin: auto 20em;}
+
+    /* Example styling of the date picker */
+    #_dp_dp {border: 1px solid lightgray; background-color: white; }
+    #_dp_head {
+        display: flex; flex-direction: row; justify-content: space-evenly;
+        background-color: #E65853; color: white;
+    }
+    #_dp_dp a {text-decoration: none;}
+    #_dp_dp a, #_dp_dp a:visited {color: inherit;}
+    #_dp_dp a:hover {text-decoration: underline;}
+    #_dp_title, #_dp_prev, #_dp_next {padding: 2px;}
+    #_dp_dp table {border-collapse: collapse; text-align: center;}
+    #_dp_dp th, #_dp_dp td {min-width: 2em;}
+    #_dp_dp th {background-color: lightgray;}
+    #_dp_dp td {border: 1px solid lightgray;}
+    #_dp_dp td:empty {border: 0px;}
+    #_dp_dp td.today a {border: 2px solid red; border-radius: 50%;}
+    </style>
+</body>
+</html>
