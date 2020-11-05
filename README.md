@@ -20,9 +20,9 @@ picker UI.
 The date picker uses the browser's localization to match the document it is in.
 Example `html` tag:
 
-    <html lang="ar-EG" dir="rtl" data-sow="6">
+    <html lang="ar-EG" dir="rtl" data-startofweek="6">
 
-The optional `data-sow` attribute gives the desired first day of the week in the
+The optional `data-startofweek` attribute gives the desired first day of the week in the
 date picker. Sunday is 0, Monday is 1, &hellip;, etc. By default the first day
 of the week is Sunday.
 
